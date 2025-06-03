@@ -1,19 +1,33 @@
 import React from 'react'
+import { useForm } from "react-hook-form";
 
-const Home = () => {
+
+const Registration = () => {
+  const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
+
+    const SignUpForm=(data)=>{
+
+      console.log(data);
+
+    }
   return (
     <div>
       <div>
-      <div class="text-center bg-gradient-to-r from-blue-800 to-blue-400 min-h-[180px] sm:p-6 p-4">
-        <h4 class="sm:text-3xl text-2xl text-white font-medium mt-3">Create your free account</h4>
+      <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 min-h-[180px] sm:p-6 p-4">
+        <h4 className="sm:text-3xl text-2xl text-white font-medium mt-3">Create your free account</h4>
       </div>
 
-      <div class="mx-4 mb-4 -mt-20">
-        <form class="max-w-4xl mx-auto bg-white [box-shadow:0_2px_13px_-6px_rgba(0,0,0,0.4)] sm:p-8 p-4 rounded-md">
-          <div class="grid sm:grid-cols-2 gap-6">
+      <div className="mx-4 mb-4 -mt-20">
+        <form onSubmit={handleSubmit(SignUpForm)}
+        className="max-w-4xl mx-auto bg-white [box-shadow:0_2px_13px_-6px_rgba(0,0,0,0.4)] sm:p-8 p-4 rounded-md">
+          <div className="grid sm:grid-cols-2 gap-6">
             <button type="button"
-              class="w-full px-4 py-2.5 flex items-center justify-center rounded-md text-slate-900 text-sm font-medium tracking-wider cursor-pointer border-0 outline-0 bg-slate-100 hover:bg-slate-200">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22px" fill="#fff" class="inline shrink-0 mr-4" viewBox="0 0 512 512">
+              className="w-full px-4 py-2.5 flex items-center justify-center rounded-md text-slate-900 text-sm font-medium tracking-wider cursor-pointer border-0 outline-0 bg-slate-100 hover:bg-slate-200">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22px" fill="#fff" className="inline shrink-0 mr-4" viewBox="0 0 512 512">
                 <path fill="#fbbd00"
                   d="M120 256c0-25.367 6.989-49.13 19.131-69.477v-86.308H52.823C18.568 144.703 0 198.922 0 256s18.568 111.297 52.823 155.785h86.308v-86.308C126.989 305.13 120 281.367 120 256z"
                   data-original="#fbbd00" />
@@ -36,8 +50,8 @@ const Home = () => {
               Continue with Google
             </button>
             <button type="button"
-              class="w-full px-4 py-2.5 flex items-center justify-center rounded-md text-white text-sm font-medium tracking-wider cursor-pointer border-0 outline-0 bg-slate-800 hover:bg-slate-900">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22px" fill="#fff" class="inline shrink-0 mr-4" viewBox="0 0 22.773 22.773">
+              className="w-full px-4 py-2.5 flex items-center justify-center rounded-md text-white text-sm font-medium tracking-wider cursor-pointer border-0 outline-0 bg-slate-800 hover:bg-slate-900">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22px" fill="#fff" className="inline shrink-0 mr-4" viewBox="0 0 22.773 22.773">
                 <path
                   d="M15.769 0h.162c.13 1.606-.483 2.806-1.228 3.675-.731.863-1.732 1.7-3.351 1.573-.108-1.583.506-2.694 1.25-3.561C13.292.879 14.557.16 15.769 0zm4.901 16.716v.045c-.455 1.378-1.104 2.559-1.896 3.655-.723.995-1.609 2.334-3.191 2.334-1.367 0-2.275-.879-3.676-.903-1.482-.024-2.297.735-3.652.926h-.462c-.995-.144-1.798-.932-2.383-1.642-1.725-2.098-3.058-4.808-3.306-8.276v-1.019c.105-2.482 1.311-4.5 2.914-5.478.846-.52 2.009-.963 3.304-.765.555.086 1.122.276 1.619.464.471.181 1.06.502 1.618.485.378-.011.754-.208 1.135-.347 1.116-.403 2.21-.865 3.652-.648 1.733.262 2.963 1.032 3.723 2.22-1.466.933-2.625 2.339-2.427 4.74.176 2.181 1.444 3.457 3.028 4.209z"
                   data-original="#000000" />
@@ -47,49 +61,121 @@ const Home = () => {
           </div>
 
           <div
-            class="my-6 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
+            className="my-6 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
             <p
-              class="mx-4 text-center text-slate-500">
+              className="mx-4 text-center text-slate-500">
               Or
             </p>
           </div>
 
-          <div class="grid sm:grid-cols-2 gap-8">
+          <div className="grid sm:grid-cols-1 gap-8">
             <div>
-              <label class="text-slate-800 text-sm font-medium mb-2 block">First Name</label>
-              <input name="name" type="text" class="bg-slate-100 focus:bg-transparent w-full text-sm text-slate-800 px-4 py-2.5 rounded-sm border border-gray-200 focus:border-blue-600 outline-0 transition-all" placeholder="Enter name" />
+              <label className="text-slate-800 text-sm font-medium mb-2 block">User Name</label>
+              <input name="username"
+               {...register(
+                    "username",{
+                     required:{
+                      value:true,
+                      message:"username is required"
+                     },
+                      minLength: {
+                      value: 5,
+                      message: "username must be at least 5 character long",
+                    },
+                    maxLength:{
+                      value: 20,
+                      message: "username must be at most 20 character long",
+                    },
+                    pattern: {
+                      value: /^[a-zA-Z0-9_]+$/,
+                      message: "Username can only contain letters, numbers, and underscores",
+                    },
+                 
+                  })}
+              type="text" className="bg-slate-100 focus:bg-transparent w-full text-sm text-slate-800 px-4 py-2.5 rounded-sm border border-gray-200 focus:border-blue-600 outline-0 transition-all" placeholder="enter username" />
+              {errors.username &&(<span className='font-bold text-red-500'>{errors.username.message}</span>)}
             </div>
+            
             <div>
-              <label class="text-slate-800 text-sm font-medium mb-2 block">Last Name</label>
-              <input name="lname" type="text" class="bg-slate-100 focus:bg-transparent w-full text-sm text-slate-800 px-4 py-2.5 rounded-sm border border-gray-200 focus:border-blue-600 outline-0 transition-all" placeholder="Enter last name" />
+              <label className="text-slate-800 text-sm font-medium mb-2 block">Email Id</label>
+              <input name="email"
+              
+                {...register("email", {
+                    required:{
+                      value:true,
+                      message:"email is required"
+
+                    } ,
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "Enter a valid email address",
+                    },
+                    minLength: {
+                      value: 5,
+                      message: "Email must be at least 5 characters long",
+                    },
+                    maxLength: {
+                      value: 50,
+                      message: "Email must be at most 50 characters long",
+                    },
+                  })}
+               type="text" className="bg-slate-100 focus:bg-transparent w-full text-sm text-slate-800 px-4 py-2.5 rounded-sm border border-gray-200 focus:border-blue-600 outline-0 transition-all" placeholder="youremail@email.com" />
+                {errors.email && (
+                  <span className="text-red-400 font-bold">
+                    {errors.email.message}
+                  </span>
+                )}
             </div>
+           
             <div>
-              <label class="text-slate-800 text-sm font-medium mb-2 block">Email Id</label>
-              <input name="email" type="text" class="bg-slate-100 focus:bg-transparent w-full text-sm text-slate-800 px-4 py-2.5 rounded-sm border border-gray-200 focus:border-blue-600 outline-0 transition-all" placeholder="Enter email" />
+              <label className="text-slate-800 text-sm font-medium mb-2 block">Password</label>
+              <input name="password" 
+              
+              type="password" className="bg-slate-100 focus:bg-transparent w-full text-sm text-slate-800 px-4 py-2.5 rounded-sm border border-gray-200 focus:border-blue-600 outline-0 transition-all" placeholder="Enter password"
+              {...register(
+                    "password",{
+                     required: 
+                     {value:true,
+                      message:"password is required"},
+                    
+                      minLength: {
+                      value: 6,
+                      message: "Password must be at least 6 character long",
+                    },
+                    maxLength:{
+                      value: 20,
+                      message: "Password must be at most 20 character long",
+                    },
+                    // pattern:{
+                    //  value:
+                    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,20}$/,
+                    //     message:
+                    //     "Password must contain at least one uppercase letter, one lowercase letter, and one number",
+                    // },
+                  })}
+                  />
+                  {errors.password &&(<span className='text-red-400 font-bold'>{errors.password.message}</span>)}
+
+                 
             </div>
-            <div>
-              <label class="text-slate-800 text-sm font-medium mb-2 block">Mobile No.</label>
-              <input name="number" type="number" class="bg-slate-100 focus:bg-transparent w-full text-sm text-slate-800 px-4 py-2.5 rounded-sm border border-gray-200 focus:border-blue-600 outline-0 transition-all" placeholder="Enter mobile number" />
-            </div>
-            <div>
-              <label class="text-slate-800 text-sm font-medium mb-2 block">Password</label>
-              <input name="password" type="password" class="bg-slate-100 focus:bg-transparent w-full text-sm text-slate-800 px-4 py-2.5 rounded-sm border border-gray-200 focus:border-blue-600 outline-0 transition-all" placeholder="Enter password" />
-            </div>
-            <div>
-              <label class="text-slate-800 text-sm font-medium mb-2 block">Confirm Password</label>
-              <input name="cpassword" type="password" class="bg-slate-100 focus:bg-transparent w-full text-sm text-slate-800 px-4 py-2.5 rounded-sm border border-gray-200 focus:border-blue-600 outline-0 transition-all" placeholder="Enter confirm password" />
-            </div>
+            
           </div>
-          <div class="mt-8">
-            <button type="button" class="py-2.5 px-5 text-sm font-medium tracking-wider rounded-sm cursor-pointer text-white bg-primary_color hover:bg-hover_color focus:outline-0">
+          <div className="mt-8">
+            <button type="submit" 
+            
+            className="py-2.5 px-5 text-sm font-medium tracking-wider rounded-sm cursor-pointer text-white bg-primary_color hover:bg-hover_color focus:outline-0">
               Sign up
             </button>
           </div>
         </form>
       </div>
     </div>
+      
     </div>
   )
 }
 
-export default Home
+export default Registration
+
+
+

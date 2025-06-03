@@ -1,6 +1,12 @@
 import React from "react";
+import {useContext} from "react"
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../context/AuthContext";
+import {Link} from "react-router";
 const Login = () => {
+
+const {user,setUser}=useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -10,7 +16,14 @@ const Login = () => {
 
   const loginForm = (data) => {
     console.log(data);
+    setUser(()=>{
+      return data
+
+    })
   };
+
+    //useContext
+    console.log("user",user);
 
   return (
     <div>
@@ -43,7 +56,7 @@ const Login = () => {
                   placeholder="your@email.com"
                   autocomplete="email"
                   {...register("email", {
-                    required: "Email is required",
+                    required: {value:true,message:"Email is required"},
                     pattern: {
                       value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                       message: "Enter a valid email address",
@@ -93,7 +106,7 @@ const Login = () => {
                   placeholder="••••••••"
                   {...register(
                     "password",{
-                     required: true ,
+                     required:{value:true,message:"Pasword is required"} ,
                       minLength: {
                       value: 6,
                       message: "Password must be at least 6 character long",
@@ -131,12 +144,12 @@ const Login = () => {
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
             Don't have an account?{" "}
-            <a
-              href="#"
+            <Link to="/" 
+              
               className="font-semibold text-indigo-600 hover:text-indigo-500"
             >
               Sign up for free
-            </a>
+            </Link>
           </p>
         </div>
       </div>

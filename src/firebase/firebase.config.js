@@ -16,7 +16,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-console.log("firebase is working properly");
+// todo:Checking firebase
+// console.log("firebase is working properly");
 
 
 export default app;
