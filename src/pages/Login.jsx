@@ -3,9 +3,14 @@ import {useContext} from "react"
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
 import {Link} from "react-router";
+import {useNavigate} from "react-router";
+import { getAuth,sendEmailVerification } from "firebase/auth";
+
+
 const Login = () => {
 
 const {user,setUser}=useContext(AuthContext);
+const navigate=useNavigate();
 
   const {
     register,
@@ -16,10 +21,17 @@ const {user,setUser}=useContext(AuthContext);
 
   const loginForm = (data) => {
     console.log(data);
-    setUser(()=>{
-      return data
 
-    })
+    if(user.email === data.email  && user.password === data.password){
+      navigate("/home");
+    }else{
+      alert("Invalid email or password");
+    }
+    //todo:inital checking if login form is working
+    // setUser(()=>{
+    //   return data
+
+    // })
   };
 
     //useContext
@@ -141,6 +153,7 @@ const {user,setUser}=useContext(AuthContext);
               </button>
             </div>
           </form>
+         
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
             Don't have an account?{" "}

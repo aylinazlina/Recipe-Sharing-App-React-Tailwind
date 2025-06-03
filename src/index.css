@@ -3,6 +3,7 @@
 :root{
     --color-primary_color:#853721;
     --color-hover_color:blue;
+    --primary_font:"Montserrat", sans-serif;
 }
 
 
@@ -10,5 +11,6 @@
 @theme{
     --color-primary_color:var(--color-primary_color);
     --color-hover_color:var(--color-hover_color);
+    --font-primary_font:var(--primary_font);
 
 }
