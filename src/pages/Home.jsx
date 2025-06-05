@@ -5,6 +5,9 @@ import Recipe_3 from "../assets/images/RecipeImage_3.jpg"
 import Recipe_4 from "../assets/images/RecipeImage_4.jpg"
 import Recipe_5 from "../assets/images/RecipeImage_5.jpg"
 import Recipe_6 from "../assets/images/RecipeImage_6.jpg"
+import UserProfile from "../components/UserProfile";
+
+
 const Home = () => {
 
 const cardsInfo =[
@@ -75,9 +78,7 @@ const cardsInfo =[
   return (
     <div>
 
-    <div className="w-[50px] h-[50px] bg-green-500 rounded-full mt-5 ml-[92%]">
-      
-    </div>
+      <UserProfile/>
 
       <h1 className="font-bold text-red-500 ml-[40%] mt-[5%] text-[50px]">Recipes Shared</h1>
 

@@ -6,7 +6,7 @@ export const AuthProvider=({children})=>{
     const [user,setUser]=useState({});
     return(
         <AuthContext.Provider value={{user,setUser}}>
-            {children} 
+            {children}  
         </AuthContext.Provider>
     )
 
