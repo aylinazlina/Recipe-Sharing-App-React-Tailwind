@@ -5,7 +5,13 @@ import Recipe_3 from "../assets/images/RecipeImage_3.jpg"
 import Recipe_4 from "../assets/images/RecipeImage_4.jpg"
 import Recipe_5 from "../assets/images/RecipeImage_5.jpg"
 import Recipe_6 from "../assets/images/RecipeImage_6.jpg"
+import Recipe_9 from "../assets/images/mangoImage.jpeg"
+import Recipe_8 from "../assets/images/RecipeImage_8.jpeg"
+import Recipe_10 from "../assets/images/RecipeImage_10.jpeg"
+
+
 import UserProfile from "../components/UserProfile";
+import { FaStar } from "react-icons/fa6";
 
 
 const Home = () => {
@@ -71,6 +77,39 @@ const cardsInfo =[
     recipe_owner:"Sophia",
     recipe_rating:"4.5"
   },
+  {
+    id:7,
+    recipe_name:"Burger with Fries",
+    recipe_image:{Recipe_10},
+    recipe_description:"Fresh vegetables stir-fried with soy sauce",
+    recipe_ingredients:"Broccoli, carrots, bell peppers, soy sauce, garlic",
+    recipe_steps:"1. Chop vegetables, 2. Heat oil, 3. Stir-fry with soy sauce",
+    recipe_owner:"Michael",
+    recipe_rating:"4.8"
+
+  },
+  {id:8,
+    recipe_name:"Pizza Margherita",
+    recipe_image:{Recipe_8},
+    recipe_description:"A classic Italian pizza with fresh basil and mozzarella",
+    recipe_ingredients:"Pizza dough, tomatoes, mozzarella cheese, basil, olive oil",
+    recipe_steps:"1. Prepare dough, 2. Add toppings, 3. Bake in oven",
+    recipe_owner:"Olivia",
+    recipe_rating:"4.9"
+
+  },
+  {
+    id:9,
+    recipe_name:"Mango Smoothie",
+    recipe_image:{Recipe_9},
+    recipe_description:"A tropical smoothie made with ripe mangoes",
+    recipe_ingredients:"Mangoes, yogurt, honey, ice",
+    recipe_steps:"1. Peel mangoes, 2. Blend with yogurt and honey, 3. Serve chilled",
+    recipe_owner:"Liam",
+    recipe_rating:"4.6"
+
+  }
+
 ] 
 
 
@@ -80,7 +119,7 @@ const cardsInfo =[
 
       <UserProfile/>
 
-      <h1 className="font-bold text-red-500 ml-[40%] mt-[5%] text-[50px]">Recipes Shared</h1>
+      <h1 className="font-extrabold text-red-500 font-primary_font ml-[40%] mt-[5%] text-[50px]">Recipes Shared</h1>
 
       <div className="CardsWrapperFull flex flex-wrap justify-content-around mt-20 gap-4 mb-7">
         
@@ -113,12 +152,17 @@ const cardsInfo =[
               </div>
           </div>
 
-          <p className="text-primary_color text-[22px] text-medium">{card.recipe_owner}</p>
-            <div className="mt-8 flex items-center">
-              <h3 className="text-xl text-slate-900 font-bold flex-1">{card.recipe_rating} ⭐</h3>
+          <p className="text-[18px] font-medium mt-4 ">{card.recipe_description}</p>
+
+          <p className="text-primary_color text-[22px] text-medium mt-4">{card.recipe_owner}</p>
+            <div className="mt-2 flex items-center justify-between">
+              <div className="flex items-center gap-2 ">
+                <h3 className="text-xl text-slate-900 font-bold flex-1">{card.recipe_rating}</h3>
+              <FaStar className="text-yellow-400 text-[20px] font-bold" /> 
+              </div>
               
                <button type="button"
-            className="px-4 py-2.5 rounded-lg text-white text-sm font-medium tracking-wider bg-blue-600 hover:bg-blue-700 outline-none cursor-pointer">
+            className="px-4 py-2.5 rounded-lg text-white text-[20px] font-medium tracking-wider bg-black hover:bg-primary_color outline-none cursor-pointer">
              View Details</button>
             </div>
           </div>
