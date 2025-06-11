@@ -6,7 +6,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 const UserProfile = () => {
   const auth = getAuth();
   const db = getDatabase();
-
+ 
   const [profilePic, setProfilePic] = useState("");
   const [user, setUser] = useState(null);
 
@@ -34,7 +34,7 @@ const UserProfile = () => {
     }
   }, []);
 
- 
+ //todo:Fetch user profile picture from Firebase Realtime Database
 useEffect(() => {
   if (user) {
     const userRef = ref(db, `users/${user.uid}`);
