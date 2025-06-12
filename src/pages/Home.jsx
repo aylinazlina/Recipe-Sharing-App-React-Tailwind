@@ -13,6 +13,8 @@ import { useNavigate } from "react-router";
 import UserProfile from "../components/UserProfile";
 import { FaStar } from "react-icons/fa6";
 
+import Navbar from "../components/Navbar"
+
 const Home = () => {
   const navigate = useNavigate();
 
@@ -123,6 +125,7 @@ const Home = () => {
 
   return (
     <div>
+      <Navbar/>
       <UserProfile />
 
       <h1 className="font-extrabold text-red-500 font-primary_font ml-[40%] mt-[5%] text-[50px]">

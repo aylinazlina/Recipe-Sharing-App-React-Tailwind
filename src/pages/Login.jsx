@@ -45,6 +45,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userinfo) => {
         console.log("user logged in successfully", userinfo);
+        setUser(userinfo.user);//set user in AuthContext globally
         navigate("/home");
         // ...
       })
@@ -72,7 +73,9 @@ const Login = () => {
         
         
         const user=userinfo.user
-        
+
+
+        setUser(user);//set User in the authContext
         
         
         //todo:user data is stored in the realtime database firebase
@@ -162,7 +165,7 @@ const Login = () => {
           >
             <div>
               <label
-                for="email"
+                htmlFor="email"
                 className="block text-sm/6 font-medium text-gray-900"
               >
                 Email address
@@ -202,7 +205,7 @@ const Login = () => {
             <div>
               <div className="flex items-center justify-between">
                 <label
-                  for="password"
+                  htmlFor="password"
                   className="block text-sm/6 font-medium text-gray-900"
                 >
                   Password
