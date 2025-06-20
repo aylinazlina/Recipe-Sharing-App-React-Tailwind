@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import {memo} from "react"
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router";
@@ -219,4 +220,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default memo(Registration);

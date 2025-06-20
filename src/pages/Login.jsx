@@ -1,4 +1,5 @@
 import React from "react";
+import {memo} from "react"
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
@@ -278,4 +279,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default memo(Login);
