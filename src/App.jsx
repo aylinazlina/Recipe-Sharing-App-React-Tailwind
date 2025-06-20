@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import RecipeDetails from "./pages/RecipeDetails";
 import CreateRecipe from "./pages/CreateRecipe";
+import EditRecipe from "./pages/EditRecipe";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/home" element={<Home/>}/>
         <Route path="/recipes/:id" element={<RecipeDetails/>} />
         <Route path="/createRecipe" element={<CreateRecipe/>}/>
+        <Route path="/edit/:id" element={<EditRecipe/>}/>
         
 
       </Routes>

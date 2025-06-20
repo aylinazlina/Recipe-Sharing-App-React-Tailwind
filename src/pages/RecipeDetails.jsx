@@ -4,6 +4,9 @@ import { memo } from "react";
 import { AuthContext } from "../context/AuthContext"; // ✅ Make sure this is correct
 // import { handleDelete } from "../utils/handleDelete"; // optional: your delete logic
 
+import { db } from "../firebase/firebase.config";
+import {ref,remove} from "firebase/database"
+
 const RecipeDetails = () => {
   const { state } = useLocation();
   const { recipe } = state || {};
@@ -18,6 +21,22 @@ const RecipeDetails = () => {
       </div>
     );
   }
+
+  // todo: delete button functionality here.
+  const handleDelete = (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this recipe?"
+    );
+    if (!confirmDelete) return;
+
+    const recipeRef = ref(db, `recipes/${id}`);
+    remove(recipeRef)
+      .then(() => {
+        alert("Recipe deleted successfully!");
+        navigate("/home");
+      })
+      .catch((err) => alert("Error deleting recipe: " + err.message));
+  };
 
   return (
     <div>
@@ -61,7 +80,8 @@ const RecipeDetails = () => {
           {recipe.recipe_rating}
         </p>
 
-        {/* ✅ Only show edit/delete if user is the owner */}
+        {/*  Only show edit/delete if user is the owner */}
+
         {user?.uid === recipe.recipe_owner_uid && (
           <div className="mb-4">
             <button
@@ -71,7 +91,7 @@ const RecipeDetails = () => {
               Edit
             </button>
             <button
-              onClick={() => alert("Implement delete logic here")}
+              onClick={() => handleDelete(recipe.id)}
               className="px-4 py-2 bg-red-500 text-white rounded"
             >
               Delete
