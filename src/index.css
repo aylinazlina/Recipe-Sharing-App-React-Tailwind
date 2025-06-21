@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 :root{
     --color-primary_color:#853721;
     --color-hover_color:blue;
@@ -8,9 +9,38 @@
 
 
 
+
+
+
 @theme{
     --color-primary_color:var(--color-primary_color);
     --color-hover_color:var(--color-hover_color);
     --font-primary_font:var(--primary_font);
 
+}
+
+/*==== dark mode light mode ==== */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+.dark-mode {
+  --bg-color: #111111;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
 }
